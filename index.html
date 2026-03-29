@@ -137,6 +137,22 @@
       height: 14px;
       cursor: pointer;
     }
+    #marker-search {
+      width: 100%;
+      box-sizing: border-box;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #8B3520;
+      color: #8B3520;
+      font-family: "Eagle Lake", serif;
+      font-size: 13px;
+      padding: 2px 0 4px;
+      outline: none;
+      margin-bottom: 8px;
+    }
+    #marker-search::placeholder {
+      color: rgba(139,53,32,0.45);
+    }
   </style>
 </head>
 <body style="background:#f7ecc9" class="w-screen h-screen flex items-center justify-center">
@@ -174,10 +190,11 @@
       <div id="settings-overlay-mid">
         <div id="settings-overlay-inner">
           <div id="settings-header">
-            <strong>Map Settings</strong>
+            <strong>Map Controls</strong>
             <button id="settings-toggle">−</button>
           </div>
           <div id="settings-content">
+            <input id="marker-search" type="text" placeholder="Search locations…" autocomplete="off">
             <label><input type="checkbox" value="house"    checked> House</label>
             <label><input type="checkbox" value="shop"     checked> Shop</label>
             <label><input type="checkbox" value="landmark" checked> Landmark</label>
@@ -461,9 +478,12 @@
         [...document.querySelectorAll('#settings-content input[type="checkbox"]:checked')]
           .map(cb => cb.value)
       );
+      const query = (document.getElementById('marker-search').value || '').trim().toLowerCase();
       markers.forEach((marker, i) => {
         const tags = marker.tags || [];
-        const visible = tags.length === 0 || tags.some(t => checkedTags.has(t));
+        const tagMatch = tags.length === 0 || tags.some(t => checkedTags.has(t));
+        const searchMatch = !query || (marker.title || '').toLowerCase().includes(query) || (marker.description || '').toLowerCase().includes(query);
+        const visible = tagMatch && searchMatch;
         if (!visible && selectedMarker === i) deselectAll();
         markerEls[i].g.setAttribute('display', visible ? '' : 'none');
         if (!visible) markerEls[i].label.setAttribute('display', 'none');
@@ -681,6 +701,9 @@
     document.querySelectorAll('#settings-content input[type="checkbox"]').forEach(cb => {
       cb.addEventListener('change', updateMarkerVisibility);
     });
+
+    // Search field
+    document.getElementById('marker-search').addEventListener('input', updateMarkerVisibility);
 
     // Settings frame minimize toggle
     const settingsToggle = document.getElementById('settings-toggle');
