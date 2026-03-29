@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Town Map</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body { overflow: hidden; }
+    #map-container {
+      cursor: grab;
+      touch-action: none;
+    }
+    #map-container:active {
+      cursor: grabbing;
+    }
+    #marker-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .marker-circle {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    @keyframes markerExpand {
+      from { transform: scale(1); }
+      to   { transform: scale(1.5); }
+    }
+    @keyframes markerShrink {
+      from { transform: scale(1.5); }
+      to   { transform: scale(1); }
+    }
+    @keyframes iconFadeOut {
+      from { opacity: 1; }
+      to   { opacity: 0; }
+    }
+    @keyframes iconFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    #desc-frame {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      max-width: 300px;
+      display: none;
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+      pointer-events: none;
+    }
+    #desc-overlay {
+      background: #EDD598;
+      clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
+      padding: 3px;
+    }
+    #desc-overlay-mid {
+      background: #8B3520;
+      clip-path: polygon(7px 0%, calc(100% - 7px) 0%, 100% 7px, 100% calc(100% - 7px), calc(100% - 7px) 100%, 7px 100%, 0% calc(100% - 7px), 0% 7px);
+      padding: 3.5px;
+    }
+    #desc-overlay-inner {
+      background: #EDD598;
+      clip-path: polygon(4px 0%, calc(100% - 4px) 0%, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0% calc(100% - 4px), 0% 4px);
+      padding: 14px 18px;
+      color: #8B3520;
+      font-family: "Eagle Lake", serif;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    #desc-overlay-inner strong {
+      font-size: 16px;
+    }
+    #settings-frame {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      min-width: 160px;
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+      pointer-events: all;
+      z-index: 10;
+    }
+    #settings-overlay {
+      background: #EDD598;
+      clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
+      padding: 3px;
+    }
+    #settings-overlay-mid {
+      background: #8B3520;
+      clip-path: polygon(7px 0%, calc(100% - 7px) 0%, 100% 7px, 100% calc(100% - 7px), calc(100% - 7px) 100%, 7px 100%, 0% calc(100% - 7px), 0% 7px);
+      padding: 3.5px;
+    }
+    #settings-overlay-inner {
+      background: #EDD598;
+      clip-path: polygon(4px 0%, calc(100% - 4px) 0%, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0% calc(100% - 4px), 0% 4px);
+      padding: 12px 16px;
+      color: #8B3520;
+      font-family: "Eagle Lake", serif;
+      font-size: 14px;
+    }
+    #settings-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    #settings-toggle {
+      background: none;
+      border: none;
+      color: #8B3520;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+      font-family: monospace;
+    }
+    #settings-content {
+      margin-top: 10px;
+    }
+    #settings-content label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 0;
+      cursor: pointer;
+      text-transform: capitalize;
+    }
+    #settings-content input[type="checkbox"] {
+      accent-color: #8B3520;
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body style="background:#f7ecc9" class="w-screen h-screen flex items-center justify-center">
+  <div id="map-container" class="relative w-full h-full flex items-center justify-center">
+    <img
+      id="map"
+      alt="Town Map"
+      class="max-w-full max-h-full object-contain select-none"
+      draggable="false"
+    />
+    <svg id="marker-svg">
+      <defs>
+        <filter id="label-shadow" x="-20%" y="-10%" width="140%" height="120%">
+          <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.5)" />
+        </filter>
+      </defs>
+      <g id="static-labels-layer"></g>
+      <g id="markers-layer"></g>
+      <g id="labels-layer"></g>
+    </svg>
+  </div>
+
+  <div id="desc-frame">
+    <div id="desc-overlay">
+      <div id="desc-overlay-mid">
+        <div id="desc-overlay-inner">
+          <span id="desc-text"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="settings-frame">
+    <div id="settings-overlay">
+      <div id="settings-overlay-mid">
+        <div id="settings-overlay-inner">
+          <div id="settings-header">
+            <strong>Map Settings</strong>
+            <button id="settings-toggle">−</button>
+          </div>
+          <div id="settings-content">
+            <label><input type="checkbox" value="house"    checked> House</label>
+            <label><input type="checkbox" value="shop"     checked> Shop</label>
+            <label><input type="checkbox" value="landmark" checked> Landmark</label>
+            <label><input type="checkbox" value="eatery"   checked> Eatery</label>
+            <label><input type="checkbox" value="shrine"   checked> Shrine</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const MIN_SCALE = 1;
+    const MAX_SCALE = 5;
+    const ZOOM_SPEED = 0.001;
+    const MARKER_COLOR = 'rgba(255, 80, 80, 0.8)';
+    const MARKER_RADIUS = 20;
+
+    // Font Awesome icon name → unicode codepoint (Solid style)
+    const FA_ICONS = {
+      'torii-gate':       '\uf6a1',
+      'star':             '\uf005',
+      'map-marker':       '\uf041',
+      'house':            '\uf015',
+      'flag':             '\uf024',
+      'skull-crossbones': '\uf714',
+      'dragon':           '\uf6d5',
+      'dungeon':          '\uf6d9',
+      'monument':         '\uf5a6',
+      'place-of-worship': '\uf67f',
+      'store':            '\uf54e',
+      'ship':             '\uf21a',
+      'shield':           '\uf132',
+      'crown':            '\uf521',
+      'bowl-rice':        '\ue2eb',
+      'vihara':           '\uf6a7',
+    };
+
+    const container = document.getElementById('map-container');
+    const img = document.getElementById('map');
+    const svg = document.getElementById('marker-svg');
+
+    let mapWidth = 0;
+    let mapHeight = 0;
+    let categories = {};
+    let markers = [];
+    let markerEls = [];
+    let baseImgW = 0;
+    let baseImgH = 0;
+
+    function updateBaseImgDimensions() {
+      if (!img.naturalWidth) return;
+      const cw = container.clientWidth;
+      const ch = container.clientHeight;
+      const ratio = img.naturalWidth / img.naturalHeight;
+      if (cw / ch > ratio) {
+        baseImgH = ch;
+        baseImgW = ch * ratio;
+      } else {
+        baseImgW = cw;
+        baseImgH = cw / ratio;
+      }
+    }
+
+    let scale = 1;
+    let originX = 0;
+    let originY = 0;
+    let isDragging = false;
+    let hasDragged = false;
+    let lastX = 0;
+    let lastY = 0;
+    let selectedMarker = null;
+    const descFrame = document.getElementById('desc-frame');
+    const descText = document.getElementById('desc-text');
+
+    function setMarkerSelected(index, selected) {
+      const { circle, text, label } = markerEls[index];
+      // Cancel any running animation cleanly
+      circle.style.animation = 'none';
+      circle.getBoundingClientRect(); // force reflow to reset animation
+
+      if (selected) {
+        circle.style.animation = 'markerExpand 0.3s ease-out forwards';
+        label.setAttribute('display', '');
+        if (text) {
+          text.style.animation = 'none';
+          text.getBoundingClientRect();
+          text.setAttribute('display', '');
+          text.style.animation = 'iconFadeOut 0.3s ease-out forwards';
+          text.addEventListener('animationend', () => {
+            text.setAttribute('display', 'none');
+            text.style.animation = '';
+          }, { once: true });
+        }
+      } else {
+        circle.style.animation = 'markerShrink 0.3s ease-in forwards';
+        label.setAttribute('display', 'none');
+        if (text) {
+          text.style.animation = 'none';
+          text.getBoundingClientRect();
+          text.setAttribute('display', '');
+          text.style.animation = 'iconFadeIn 0.3s ease-in forwards';
+        }
+      }
+    }
+
+    function selectMarker(index) {
+      if (selectedMarker === index) return;
+      if (selectedMarker !== null) setMarkerSelected(selectedMarker, false);
+      selectedMarker = index;
+      setMarkerSelected(index, true);
+      const { title, description } = markers[index];
+      descText.innerHTML = `<strong>${title || ''}</strong>${description ? '<br><br>' + description : ''}`;
+      descFrame.style.display = 'block';
+    }
+
+    function deselectAll() {
+      if (selectedMarker !== null) {
+        setMarkerSelected(selectedMarker, false);
+        selectedMarker = null;
+        descFrame.style.display = 'none';
+      }
+    }
+
+    function createSignLabel(title) {
+      const ns = 'http://www.w3.org/2000/svg';
+      const chars = title.toUpperCase().split('');
+      const charH = 22;
+      const padX = 9;
+      const padY = 12;
+      const w = 34;
+      const h = chars.length * charH + padY * 2;
+      const notch = 7;
+
+      function notchedPath(x, y, pw, ph, n) {
+        return `M ${x+n},${y} L ${x+pw-n},${y} L ${x+pw},${y+n} L ${x+pw},${y+ph-n} L ${x+pw-n},${y+ph} L ${x+n},${y+ph} L ${x},${y+ph-n} L ${x},${y+n} Z`;
+      }
+
+      const g = document.createElementNS(ns, 'g');
+      g.setAttribute('display', 'none');
+      g.setAttribute('pointer-events', 'none');
+      g.setAttribute('filter', 'url(#label-shadow)');
+
+      const bg = document.createElementNS(ns, 'path');
+      bg.setAttribute('d', notchedPath(0, 0, w, h, notch));
+      bg.setAttribute('fill', '#8B3520');
+      g.appendChild(bg);
+
+      const bi = 3.5;
+      const border = document.createElementNS(ns, 'path');
+      border.setAttribute('d', notchedPath(bi, bi, w - bi*2, h - bi*2, Math.max(1, notch - bi)));
+      border.setAttribute('fill', 'none');
+      border.setAttribute('stroke', '#E8CC88');
+      border.setAttribute('stroke-width', '1.2');
+      g.appendChild(border);
+
+      chars.forEach((char, i) => {
+        const t = document.createElementNS(ns, 'text');
+        t.setAttribute('x', w / 2);
+        t.setAttribute('y', padY + i * charH + charH / 2);
+        t.setAttribute('text-anchor', 'middle');
+        t.setAttribute('dominant-baseline', 'central');
+        t.setAttribute('fill', '#EDD598');
+        t.setAttribute('font-size', '15');
+        t.setAttribute('font-family', '"Eagle Lake", serif');
+        t.setAttribute('font-weight', 'bold');
+        t.textContent = char;
+        g.appendChild(t);
+      });
+
+      g._labelW = w;
+      g._labelH = h;
+      return g;
+    }
+
+    function createStaticLabels(labelsData) {
+      const ns = 'http://www.w3.org/2000/svg';
+      const layer = document.getElementById('static-labels-layer');
+      (labelsData || []).forEach(({ x, y, text, vertical, fontSize }) => {
+        const size = fontSize || 50;
+        const g = document.createElementNS(ns, 'g');
+        g.setAttribute('pointer-events', 'none');
+
+        if (vertical) {
+          const chars = text.split('');
+          const lineH = size * 1.2;
+          const totalH = chars.length * lineH;
+          chars.forEach((char, i) => {
+            const t = document.createElementNS(ns, 'text');
+            t.setAttribute('x', x);
+            t.setAttribute('y', y - totalH / 2 + lineH / 2 + i * lineH);
+            t.setAttribute('text-anchor', 'middle');
+            t.setAttribute('dominant-baseline', 'central');
+            t.setAttribute('fill', 'black');
+            t.setAttribute('font-size', size);
+            t.setAttribute('font-family', '"Eagle Lake", serif');
+            t.textContent = char;
+            g.appendChild(t);
+          });
+        } else {
+          const t = document.createElementNS(ns, 'text');
+          t.setAttribute('x', x);
+          t.setAttribute('y', y);
+          t.setAttribute('text-anchor', 'middle');
+          t.setAttribute('dominant-baseline', 'central');
+          t.setAttribute('fill', 'black');
+          t.setAttribute('font-size', size);
+          t.setAttribute('font-family', '"Eagle Lake", serif');
+          t.textContent = text;
+          g.appendChild(t);
+        }
+
+        layer.appendChild(g);
+      });
+    }
+
+    function updateStaticLabels() {
+      if (!baseImgW) return;
+      const mapScale = scale * baseImgW / mapWidth;
+      const flexL = (container.clientWidth  - baseImgW) / 2;
+      const flexT = (container.clientHeight - baseImgH) / 2;
+      document.getElementById('static-labels-layer')
+        .setAttribute('transform', `translate(${flexL + originX}, ${flexT + originY}) scale(${mapScale})`);
+    }
+
+    function createMarkerEls(markerData) {
+      markerEls = markerData.map(({ icon, faIcon, color, category, title }, index) => {
+        const cat = categories[category] || {};
+        const markerColor = color || cat.color || MARKER_COLOR;
+        faIcon = faIcon || cat.faIcon;
+
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        document.getElementById('markers-layer').appendChild(g);
+
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('r', MARKER_RADIUS);
+        circle.setAttribute('fill', 'none');
+        circle.setAttribute('stroke', markerColor);
+        circle.setAttribute('stroke-width', '3');
+        circle.setAttribute('class', 'marker-circle');
+        circle.setAttribute('pointer-events', 'all');
+        circle.style.cursor = 'pointer';
+        circle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (!hasDragged) selectMarker(index);
+        });
+        g.appendChild(circle);
+
+        let text = null;
+        const iconChar = faIcon ? FA_ICONS[faIcon] : icon;
+        if (iconChar) {
+          text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          text.setAttribute('text-anchor', 'middle');
+          text.setAttribute('dominant-baseline', 'central');
+          text.setAttribute('fill', markerColor);
+          text.setAttribute('font-size', MARKER_RADIUS * 1.05);
+          text.setAttribute('pointer-events', 'all');
+          text.style.cursor = 'pointer';
+          text.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (!hasDragged) selectMarker(index);
+          });
+          if (faIcon) {
+            text.setAttribute('font-family', '"Font Awesome 6 Free"');
+            text.setAttribute('font-weight', '900');
+          }
+          text.textContent = iconChar;
+          g.appendChild(text);
+        }
+
+        // Title label (hidden by default) — vertical signboard style, in top layer
+        const label = createSignLabel(title || '');
+        document.getElementById('labels-layer').appendChild(label);
+
+        return { g, circle, text, label };
+      });
+    }
+
+    function updateMarkerVisibility() {
+      const checkedTags = new Set(
+        [...document.querySelectorAll('#settings-content input[type="checkbox"]:checked')]
+          .map(cb => cb.value)
+      );
+      markers.forEach((marker, i) => {
+        const tags = marker.tags || [];
+        const visible = tags.length === 0 || tags.some(t => checkedTags.has(t));
+        if (!visible && selectedMarker === i) deselectAll();
+        markerEls[i].g.setAttribute('display', visible ? '' : 'none');
+        if (!visible) markerEls[i].label.setAttribute('display', 'none');
+      });
+    }
+
+    function updateMarkers() {
+      const imgRect = img.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      const mapLeft   = imgRect.left   - containerRect.left;
+      const mapRight  = imgRect.right  - containerRect.left;
+      const mapTop    = imgRect.top    - containerRect.top;
+      const mapBottom = imgRect.bottom - containerRect.top;
+
+      const scaledRadius = MARKER_RADIUS * scale;
+
+      markers.forEach(({ x, y }, i) => {
+        const screenX = mapLeft + (x / mapWidth)  * imgRect.width;
+        const screenY = mapTop  + (y / mapHeight) * imgRect.height;
+        const { circle, text, label } = markerEls[i];
+        circle.setAttribute('cx', screenX);
+        circle.setAttribute('cy', screenY);
+        circle.setAttribute('r', scaledRadius);
+        circle.setAttribute('stroke-width', 3 * scale);
+        if (text) {
+          text.setAttribute('x', screenX);
+          text.setAttribute('y', screenY);
+          text.setAttribute('font-size', scaledRadius * 1.05);
+        }
+
+        // Place label to the right; flip left if it would overflow the map edge
+        let lx = screenX + scaledRadius + 8;
+        if (lx + label._labelW > mapRight) {
+          lx = screenX - scaledRadius - 8 - label._labelW;
+        }
+        lx = Math.max(mapLeft, lx);
+
+        // Clamp vertically within the map
+        let ly = screenY - label._labelH / 2;
+        ly = Math.max(mapTop, Math.min(mapBottom - label._labelH, ly));
+
+        label.setAttribute('transform', `translate(${lx}, ${ly})`);
+      });
+    }
+
+    function applyTransform() {
+      img.style.transformOrigin = '0 0';
+      img.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
+      updateStaticLabels();
+      updateMarkers();
+    }
+
+    function clampOrigin() {
+      const cw = container.clientWidth;
+      const ch = container.clientHeight;
+      // Flexbox centers the image at scale=1; the transform origin is its top-left corner
+      const flexL = (cw - baseImgW) / 2;
+      const flexT = (ch - baseImgH) / 2;
+
+      if (baseImgW * scale > cw) {
+        // left edge at container left: flexL + originX = 0  →  originX = -flexL
+        // right edge at container right: flexL + originX + baseImgW*scale = cw
+        originX = Math.min(-flexL, Math.max(cw - flexL - baseImgW * scale, originX));
+      } else {
+        originX = 0;
+      }
+
+      if (baseImgH * scale > ch) {
+        originY = Math.min(-flexT, Math.max(ch - flexT - baseImgH * scale, originY));
+      } else {
+        originY = 0;
+      }
+    }
+
+    function zoomAt(clientX, clientY, delta) {
+      const prevScale = scale;
+      scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale + delta * scale));
+      if (scale === prevScale) return;
+
+      const factor = scale / prevScale;
+      const rect = container.getBoundingClientRect();
+      const px = clientX - rect.left;
+      const py = clientY - rect.top;
+
+      originX = px - factor * (px - originX);
+      originY = py - factor * (py - originY);
+
+      if (scale === MIN_SCALE) {
+        originX = 0;
+        originY = 0;
+      } else {
+        clampOrigin();
+      }
+
+      applyTransform();
+    }
+
+    // Load map data from JSON
+    fetch('willowshore.json')
+      .then(r => r.json())
+      .then(data => {
+        mapWidth = data.width;
+        mapHeight = data.height;
+        categories = data.categories || {};
+        markers = data.markers;
+        img.src = data.image;
+        createStaticLabels(data.labels);
+        createMarkerEls(markers);
+        img.addEventListener('load', () => { updateBaseImgDimensions(); updateStaticLabels(); updateMarkers(); updateMarkerVisibility(); });
+        if (img.complete) { updateBaseImgDimensions(); updateStaticLabels(); updateMarkers(); updateMarkerVisibility(); }
+        window.addEventListener('resize', () => { updateBaseImgDimensions(); applyTransform(); });
+
+        // Add category icons to settings checkboxes
+        const tagToCategory = { shop: 'trade' };
+        document.querySelectorAll('#settings-content input[type="checkbox"]').forEach(cb => {
+          const catName = tagToCategory[cb.value] || cb.value;
+          const cat = categories[catName];
+          if (!cat) return;
+          const icon = document.createElement('i');
+          icon.className = `fa-solid fa-${cat.faIcon}`;
+          icon.style.color = cat.color;
+          icon.style.width = '14px';
+          icon.style.textAlign = 'center';
+          cb.after(icon);
+        });
+      });
+
+    // Mouse wheel zoom + trackpad pinch (ctrlKey on macOS)
+    container.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const speed = e.ctrlKey ? 0.01 : ZOOM_SPEED;
+      const delta = -e.deltaY * speed;
+      zoomAt(e.clientX, e.clientY, delta);
+    }, { passive: false });
+
+    // Deselect on container click (not on markers, not after drag)
+    container.addEventListener('click', (e) => {
+      if (!hasDragged) deselectAll();
+    });
+
+    // Log map image coordinates on click
+    container.addEventListener('click', (e) => {
+      if (hasDragged) return;
+      const imgRect = img.getBoundingClientRect();
+      const imgX = Math.round((e.clientX - imgRect.left) / imgRect.width  * mapWidth);
+      const imgY = Math.round((e.clientY - imgRect.top)  / imgRect.height * mapHeight);
+      console.log(`Map coords: x=${imgX}, y=${imgY}`);
+    });
+
+    // Mouse drag
+    container.addEventListener('mousedown', (e) => {
+      hasDragged = false;
+      if (scale <= MIN_SCALE) return;
+      isDragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      hasDragged = true;
+      originX += e.clientX - lastX;
+      originY += e.clientY - lastY;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      clampOrigin();
+      applyTransform();
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Pinch to zoom
+    let lastTouchDist = null;
+
+    container.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 2) {
+        e.preventDefault();
+        lastTouchDist = null;
+      } else if (e.touches.length === 1 && scale > MIN_SCALE) {
+        isDragging = true;
+        lastX = e.touches[0].clientX;
+        lastY = e.touches[0].clientY;
+      }
+    }, { passive: false });
+
+    container.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      if (e.touches.length === 2) {
+        isDragging = false;
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        if (lastTouchDist !== null) {
+          const delta = (dist - lastTouchDist) / lastTouchDist * 3;
+          zoomAt(midX, midY, delta);
+        }
+        lastTouchDist = dist;
+      } else if (e.touches.length === 1 && isDragging) {
+        originX += e.touches[0].clientX - lastX;
+        originY += e.touches[0].clientY - lastY;
+        lastX = e.touches[0].clientX;
+        lastY = e.touches[0].clientY;
+        clampOrigin();
+        applyTransform();
+      }
+    }, { passive: false });
+
+    container.addEventListener('touchend', () => {
+      lastTouchDist = null;
+      isDragging = false;
+    });
+    // Tag filter checkboxes
+    document.querySelectorAll('#settings-content input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', updateMarkerVisibility);
+    });
+
+    // Settings frame minimize toggle
+    const settingsToggle = document.getElementById('settings-toggle');
+    const settingsContent = document.getElementById('settings-content');
+    settingsToggle.addEventListener('click', () => {
+      const minimized = settingsContent.style.display === 'none';
+      settingsContent.style.display = minimized ? '' : 'none';
+      settingsToggle.textContent = minimized ? '−' : '+';
+    });
+  </script>
+</body>
+</html>

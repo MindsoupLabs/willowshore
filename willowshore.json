@@ -1,0 +1,496 @@
+{
+   "image":"images/townmap.webp",
+   "width":5315,
+   "height":3050,
+   "categories":{
+      "trade":{
+         "color":"rgba(0, 100, 0, 0.7)",
+         "faIcon":"vihara"
+      },
+      "shrine":{
+         "color":"rgba(139, 0, 0, 0.7)",
+         "faIcon":"torii-gate"
+      },
+      "landmark":{
+         "color":"rgba(0, 0, 139, 0.7)",
+         "faIcon":"monument"
+      },
+      "house":{
+         "color":"rgba(255, 114, 43, 0.7)",
+         "faIcon":"house"
+      },
+      "eatery":{
+         "color":"rgba(177, 0, 186, 0.7)",
+         "faIcon":"bowl-rice"
+      }
+   },
+   "labels":[
+      {
+         "x":44,
+         "y":492,
+         "text":"Downtown",
+         "vertical":true,
+         "fontSize":50
+      }
+   ],
+   "markers":[
+      {
+         "x":310,
+         "y":2165,
+         "category":"trade",
+         "title":"Eternal Blaze Ironworks",
+         "description":"Willowshore's blacksmith, the kitsune <i>Yong Wu-Xiu</i>. She has mastered many metal working skills and can make high quality arms and armor, though locally she's most known for her exceptional quality cookware.",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":498,
+         "y":2047,
+         "category":"trade",
+         "title":"Willowshore Stables",
+         "description":"Willowshore Stables is the town’s veterinary facility for household animals, pets, and livestock. Incidentally, Willowshore Stables’ use of livestock as beasts of burden influenced the village’s food culture, causing many households to avoid the consumption of beef. The owner, <i>Kum Soon-chong</i>, and his teenage son, <i>Meng-sung</i>, are well-known for their affable attitudes and compassion for all kinds of animals.",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":462,
+         "y":1742,
+         "category":"shrine",
+         "title":"Abadar Shrine",
+         "description":"This elegant shrine houses a 3-foot-tall limestone statue of Abadar that holds a shovel in one hand and a trowel in the other. The statue was reportedly taken to Goka first to ritualistically invite Abadar’s divine blessings at the Grand Bank before being ferried back to Willowshore.",
+         "tags":[
+            "shrine"
+         ]
+      },
+      {
+         "x":743,
+         "y":2076,
+         "category":"trade",
+         "title":"Graveside Manners",
+         "description":" The tombs in this old cemetery house the urns of many of those early settlers. Today, only a few families use Graveside Manners as a burial ground. The headstones remain free of lichen and moss thanks to the graveyard’s keeper, <i>You So-Jin</i> who maintains an herbalist shop—the primary reason anyone visits Graveside Manners today.",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":1086,
+         "y":2478,
+         "category":"trade",
+         "title":"Silvermist Lodge",
+         "description":"The Silvermist Lodges are split between three small compounds in the woods south of town. <i>Aiomena</i> now runs the hunting lodges from the central compound.",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":789,
+         "y":1520,
+         "category":"house",
+         "title":"Matsuki Estate",
+         "description":"<i>“Old” Matsuki</i> once apprenticed to the head carpenter of the Tan Sugi monastery. After taking leave from his master, he led his family to construct a large estate to house all two dozen of them. Reportedly, the superstitious patriarch then made sure that the outer walls were whitewashed with limestone containing blessed salts and holy water.",
+         "tags":[
+            "landmark",
+            "house"
+         ]
+      },
+      {
+         "x":1222,
+         "y":1427,
+         "category":"eatery",
+         "title":"Thrice Blessed Inn",
+         "description":"Originally the Thrice Blessed Brothel, this business now operates as an inn under its half-elven owner <i>Mother Otis</i>. Its heavy shutters (for privacy) and the rumoured blessing of three different gods (Kofusachi, Calistria and Shelyn) are all that remains of its original purpose.",
+         "tags":[
+            "shop",
+            "eatery"
+         ]
+      },
+      {
+         "x":1564,
+         "y":1739,
+         "category":"trade",
+         "title":"Milling Houses",
+         "description":"Work at the mills is intense, and the hours can be irregular due to the demand each day. The millers’ leader, <i>Choe Chung-hu</i>, keeps morale high with encouragement, pushing back against unreasonable demands, keeping wages stable, and offering midnight snacks.",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":2671,
+         "y":1889,
+         "category":"shrine",
+         "title":"Nine Ear Shrine",
+         "description":"This shrine to Daikitsu looks like an unassuming mud-wall hut from the outside. Inside it descends 10 feet underground into an enclosed space lined with stone, in the middle of which sits a 15-foot-tall marble statue of a nine-tailed fox. A large spiritual rope made of hay hangs off its neck. The walls of the basement are decorated with painted carvings that depict stories of Daikitsu.",
+         "tags":[
+            "shrine"
+         ]
+      },
+      {
+         "x":2003,
+         "y":2169,
+         "category":"shrine",
+         "title":"Lady of Souls",
+         "description":"A cathedral to Pharasma, run by the second-generation Taldan woman <i>Elizath Candora</i>, who believes she is here as fate arranged by the goddess herself. She’s fond of spending time alone in the graveyard with her flute and often plays the instrument there to help soothe the spirits of those recently buried therein.",
+         "tags":[
+            "shrine"
+         ]
+      },
+      {
+         "x":1877,
+         "y":1629,
+         "category":"landmark",
+         "title":"Dawnstep Bridge",
+         "description":"The main bridge connecting Southshore and Northridge, as well as the location of the <i>Eternal Lantern<i>. Shenmen custom dictates the latern must remain lit at all times lest the town appear abandoned, which would invite vermin, ghosts, dangerous beasts and worse into the town.",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":2207,
+         "y":1889,
+         "category":"trade",
+         "title":"Industrial District",
+         "description":"The industrial heart of Willowshore, which includes several noticable businesses:<br><br>Jadeite Essentials, a distillery and glasblowing facility, managed by the half-elf <i>Shioli</i><br><br>Cloud Paper House, a paper mill run by tengu <i>Kawaka</i> who is also leader of the labourer's guild.<br><br>Rebel's Leatherworks, a tannery run by the grumpy nagaji <i>Vitumniar</i>.",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":2152,
+         "y":1563,
+         "category":"shrine",
+         "title":"Woodraft Lake",
+         "description":"When the construction of the Willowshore Dam created this lake it is said to have submerged a shrine to Lady Nanbyo, and the lake is still treated as a shrine to the Widow of Suffering.",
+         "tags":[
+            "landmark",
+            "shrine"
+         ]
+      },
+      {
+         "x":2362,
+         "y":1547,
+         "category":"landmark",
+         "title":"Willowshore Dam",
+         "description":"Willowshore’s dam is a minor engineering marvel. Its main body is constructed out of immense, precisely fitted slabs of dark-gray marble, carved with a carefully calculated curvature. The dam has two giant wooden gates that can be closed or opened to lower the level of the lake. Turning the wheel that controls the gates automatically causes a bell to ring, signaling anyone downriver to move away to safety.",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":1871,
+         "y":1319,
+         "category":"landmark",
+         "title":"Downtown Willowshore",
+         "description":"",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":170,
+         "y":695,
+         "category":"landmark",
+         "title":"Imperial Baracks",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":276,
+         "y":353,
+         "category":"trade",
+         "title":"Treesparrow's Rest",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":623,
+         "y":340,
+         "category":"trade",
+         "title":"The Happy Kappa",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":521,
+         "y":632,
+         "category":"landmark",
+         "title":"Seven Coloured Songbird Theatre",
+         "description":"",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":2008,
+         "y":1070,
+         "category":"house",
+         "title":"Governor's Mansion",
+         "description":"",
+         "tags":[
+            "landmark",
+            "house"
+         ]
+      },
+      {
+         "x":1949,
+         "y":1213,
+         "category":"trade",
+         "title":"Luo and Laws",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":2153,
+         "y":1004,
+         "category":"trade",
+         "title":"Woodcarver's Guild",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":2343,
+         "y":1238,
+         "category":"trade",
+         "title":"Second Best",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":2812,
+         "y":1129,
+         "category":"trade",
+         "title":"The Hand Of Spring",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":3993,
+         "y":1319,
+         "category":"trade",
+         "title":"Mother's Coil",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":4518,
+         "y":1095,
+         "category":"trade",
+         "title":"Ceiba-Duyue Exchange",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":4776,
+         "y":1134,
+         "category":"trade",
+         "title":"Fisheries",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":4888,
+         "y":1333,
+         "category":"trade",
+         "title":"Dock",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":4554,
+         "y":751,
+         "category":"trade",
+         "title":"Mushroom Warehouse",
+         "description":"",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":1606,
+         "y":1366,
+         "category":"landmark",
+         "title":"Cerulean Teahouse",
+         "description":"",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":1462,
+         "y":1199,
+         "category":"landmark",
+         "title":"Abandoned Estates",
+         "description":"",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":1109,
+         "y":1096,
+         "category":"eatery",
+         "title":"The Leshy Saloon",
+         "description":"",
+         "tags":[
+            "shop",
+            "eatery"
+         ]
+      },
+      {
+         "x":803,
+         "y":734,
+         "category":"landmark",
+         "title":"Bones of the Forgotten",
+         "description":"",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":2112,
+         "y":166,
+         "category":"landmark",
+         "title":"The Great Willow",
+         "description":"",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":4652,
+         "y":1733,
+         "category":"landmark",
+         "title":"Spider Gate",
+         "description":"",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":3262,
+         "y":2312,
+         "category":"trade",
+         "title":"Silvermist Lodge",
+         "description":"The Silvermist Lodges are split between three small compounds in the woods south of town. <i>Aiomena</i> now runs the hunting lodges from the central compound.",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":3728,
+         "y":2588,
+         "category":"trade",
+         "title":"Silvermist Lodge",
+         "description":"The Silvermist Lodges are split between three small compounds in the woods south of town. <i>Aiomena</i> now runs the hunting lodges from the central compound.",
+         "tags":[
+            "shop"
+         ]
+      },
+      {
+         "x":1929,
+         "y":1804,
+         "category":"house",
+         "title":"Matsu's House",
+         "description":"",
+         "tags":[
+            "house"
+         ]
+      },
+      {
+         "x":2098,
+         "y":1346,
+         "category":"eatery",
+         "title":"Mama Bao's",
+         "description":"",
+         "tags":[
+            "shop",
+            "eatery"
+         ]
+      },
+      {
+         "x":1973,
+         "y":940,
+         "category":"house",
+         "title":"Ho Jeong-Hui's Home",
+         "description":"",
+         "tags":[
+            "house"
+         ]
+      },
+      {
+         "x":2614,
+         "y":2544,
+         "category":"house",
+         "title":"Kawaka's Home",
+         "description":"",
+         "tags":[
+            "house"
+         ]
+      },
+      {
+         "x":5162,
+         "y":917,
+         "category":"landmark",
+         "title":"Wooded Clearing",
+         "description":"",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":3848,
+         "y":1759,
+         "category":"landmark",
+         "title":"Eastern Watchtower",
+         "description":"",
+         "tags":[
+            "landmark"
+         ]
+      },
+      {
+         "x":1859,
+         "y":1120,
+         "category":"eatery",
+         "title":"The Hungry Groundhog",
+         "description":"",
+         "tags":[
+            "shop",
+            "eatery"
+         ]
+      },
+      {
+         "x":4855,
+         "y":1205,
+         "category":"eatery",
+         "title":"Zhong's Catch",
+         "description":"",
+         "tags":[
+            "shop",
+            "eatery"
+         ]
+      }
+   ]
+}
