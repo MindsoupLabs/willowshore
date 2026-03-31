@@ -39,7 +39,7 @@
          "y":2165,
          "category":"trade",
          "title":"Eternal Blaze Ironworks",
-         "description":"Willowshore's blacksmith, the kitsune <i>Yong Wu-Xiu</i>. She has mastered many metal working skills and can make high quality arms and armor, though locally she's most known for her exceptional quality cookware.",
+         "description":"Willowshore's blacksmith, the kitsune <i>Yong Wu-Xiu</i>. She has mastered many metal working skills and can make high quality arms and armor, though locally she's most known for her exceptional quality cookware.<br><br><b>Services:</b> crafting metal items<br><b>Wares:</b> metalworks, adventuring gear, cookware, metal armor, metal weapons, metal shields",
          "tags":[
             "shop"
          ]
@@ -49,7 +49,7 @@
          "y":2047,
          "category":"trade",
          "title":"Willowshore Stables",
-         "description":"Willowshore Stables is the town’s veterinary facility for household animals, pets, and livestock. Incidentally, Willowshore Stables’ use of livestock as beasts of burden influenced the village’s food culture, causing many households to avoid the consumption of beef. The owner, <i>Kum Soon-chong</i>, and his teenage son, <i>Meng-sung</i>, are well-known for their affable attitudes and compassion for all kinds of animals.",
+         "description":"Willowshore Stables is the town’s veterinary facility for household animals, pets, and livestock. Incidentally, Willowshore Stables’ use of livestock as beasts of burden influenced the village’s food culture, causing many households to avoid the consumption of beef. The owner, <i>Kum Soon-chong</i>, and his teenage son, <i>Meng-sung</i>, are well-known for their affable attitudes and compassion for all kinds of animals.<br><br><b>Services:</b> medical treatment for animals<br><b>Wares:</b> animal rentals, barding, saddle bags, carts",
          "tags":[
             "shop"
          ]
@@ -69,7 +69,7 @@
          "y":2076,
          "category":"trade",
          "title":"Graveside Manners",
-         "description":" The tombs in this old cemetery house the urns of many of those early settlers. Today, only a few families use Graveside Manners as a burial ground. The headstones remain free of lichen and moss thanks to the graveyard’s keeper, <i>You So-Jin</i> who maintains an herbalist shop—the primary reason anyone visits Graveside Manners today.",
+         "description":"The tombs in this old cemetery house the urns of many of those early settlers. Today, only a few families use Graveside Manners as a burial ground. The headstones remain free of lichen and moss thanks to the graveyard’s keeper, <i>You So-Jin</i> who maintains an herbalist shop—the primary reason anyone visits Graveside Manners today.<br><br><b>Services:</b> alchemy lab for rent<br><b>Wares:</b> alchemical elixirs and tools, alchemical reagents, fresh and dried herbs",
          "tags":[
             "shop"
          ]
@@ -79,7 +79,7 @@
          "y":2478,
          "category":"trade",
          "title":"Silvermist Lodge",
-         "description":"The Silvermist Lodges are split between three small compounds in the woods south of town. <i>Aiomena</i> now runs the hunting lodges from the central compound.",
+         "description":"The Silvermist Lodges are split between three small compounds in the woods south of town. <i>Aiomena</i> now runs the hunting lodges from the central compound.<br><br><b>Wares:</b> animal parts, snare supplies",
          "tags":[
             "shop"
          ]
@@ -100,7 +100,7 @@
          "y":1427,
          "category":"eatery",
          "title":"Thrice Blessed Inn",
-         "description":"Originally the Thrice Blessed Brothel, this business now operates as an inn under its half-elven owner <i>Mother Otis</i>. Its heavy shutters (for privacy) and the rumoured blessing of three different gods (Kofusachi, Calistria and Shelyn) are all that remains of its original purpose.",
+         "description":"Originally the Thrice Blessed Brothel, this business now operates as an inn under its half-elven owner <i>Mother Otis</i>. Its heavy shutters (for privacy) and the rumoured blessing of three different gods (Kofusachi, Calistria and Shelyn) are all that remains of its original purpose.<br><br><b>Services:</b> lodging<br><b>Wares:</b> food and drink",
          "tags":[
             "shop",
             "eatery"
@@ -111,7 +111,7 @@
          "y":1739,
          "category":"trade",
          "title":"Milling Houses",
-         "description":"Work at the mills is intense, and the hours can be irregular due to the demand each day. The millers’ leader, <i>Choe Chung-hu</i>, keeps morale high with encouragement, pushing back against unreasonable demands, keeping wages stable, and offering midnight snacks.",
+         "description":"Work at the mills is intense, and the hours can be irregular due to the demand each day. The millers’ leader, <i>Choe Chung-hu</i>, keeps morale high with encouragement, pushing back against unreasonable demands, keeping wages stable, and offering midnight snacks.<br><br><b>Wares:</b> de-husked grain, grain flower and stone objects",
          "tags":[
             "shop"
          ]
@@ -121,7 +121,7 @@
          "y":1889,
          "category":"shrine",
          "title":"Nine Ear Shrine",
-         "description":"This shrine to Daikitsu looks like an unassuming mud-wall hut from the outside. Inside it descends 10 feet underground into an enclosed space lined with stone, in the middle of which sits a 15-foot-tall marble statue of a nine-tailed fox. A large spiritual rope made of hay hangs off its neck. The walls of the basement are decorated with painted carvings that depict stories of Daikitsu.",
+         "description":"This shrine to Daikitsu looks like an unassuming mud-wall hut from the outside. Inside it descends 10 feet underground into an enclosed space lined with stone, in the middle of which sits a 15-foot-tall marble statue of a nine-tailed fox. A large spiritual rope made of hay hangs off its neck. The walls of the basement are decorated with painted carvings that depict stories of Daikitsu.<br><br><b>Services:</b> fulu crafting, scribe scroll (divine or primal), limited talisman crafting <br><b>Wares:</b> fulus, scrolls, talismans",
          "tags":[
             "shrine"
          ]
@@ -131,7 +131,7 @@
          "y":2169,
          "category":"shrine",
          "title":"Lady of Souls",
-         "description":"A cathedral to Pharasma, run by the second-generation Taldan woman <i>Elizath Candora</i>, who believes she is here as fate arranged by the goddess herself. She’s fond of spending time alone in the graveyard with her flute and often plays the instrument there to help soothe the spirits of those recently buried therein.",
+         "description":"A cathedral to Pharasma, run by the second-generation Taldan woman <i>Elizath Candora</i>, who believes she is here as fate arranged by the goddess herself. She’s fond of spending time alone in the graveyard with her flute and often plays the instrument there to help soothe the spirits of those recently buried therein.<br><br><b>Services:</b> scribe scroll (divine), limited (non)magical healing <br><b>Wares:</b> scrolls, consumable religious items",
          "tags":[
             "shrine"
          ]
@@ -141,7 +141,7 @@
          "y":1629,
          "category":"landmark",
          "title":"Dawnstep Bridge",
-         "description":"The main bridge connecting Southshore and Northridge, as well as the location of the <i>Eternal Lantern</i>. Shenmen custom dictates the latern must remain lit at all times lest the town appear abandoned, which would invite vermin, ghosts, dangerous beasts and worse into the town.",
+         "description":"A stone bridge some seven feet above the water, connecting Southshore and Northridge, as well as the location of the <i>Eternal Lantern</i>. Shenmen custom dictates the latern must remain lit at all times lest the town appear abandoned, which would invite vermin, ghosts, dangerous beasts and worse into the town.",
          "tags":[
             "landmark"
          ]
@@ -151,7 +151,7 @@
          "y":1889,
          "category":"trade",
          "title":"Industrial District",
-         "description":"The industrial heart of Willowshore, which includes several noticable businesses:<br><br>Jadeite Essentials, a distillery and glasblowing facility, managed by the half-elf <i>Shioli</i><br><br>Cloud Paper House, a paper mill run by tengu <i>Kawaka</i> who is also leader of the labourer's guild.<br><br>Rebel's Leatherworks, a tannery run by the grumpy nagaji <i>Vitumniar</i>.",
+         "description":"The industrial heart of Willowshore, which includes several noticable businesses:<br><br>Jadeite Essentials, a distillery and glasblowing facility, managed by the half-elf <i>Shioli</i>.<br><br><b>Wares:</b> alcohol, essential oils and perfumes, glassware and glass items<br><br>Cloud Paper House, a paper mill run by tengu <i>Kawaka</i> who is also leader of the labourer's guild.<br><b>Wares:</b> paper and paper products such as spellbooks and formula books<br><br>Rebel's Leatherworks, a tannery run by the grumpy nagaji <i>Vitumniar</i>.<br><b>Wares:</b> hide and leather items",
          "tags":[
             "shop"
          ]
@@ -192,7 +192,7 @@
          "y":695,
          "category":"landmark",
          "title":"Imperial Baracks",
-         "description":"The Imperial Baracks house the Willowshore guard. Once commanded by <i>Granny Hu</i>, now the stoic <i>Zheng Peng</i> leads the guard.",
+         "description":"The Imperial Baracks house the Willowshore guard. Once commanded by <i>Granny Hu</i>, now the stoic <i>Zheng Peng</i> leads the guard.<br><b>Wares: </b>armor, gear maintenance equipment, weapons",
          "tags":[
             "shop"
          ]
@@ -202,7 +202,7 @@
          "y":353,
          "category":"trade",
          "title":"Treesparrow's Rest",
-         "description":"One of Willowshore's busiest stores, the Treesparrow's Nest is a family-owned grocery store run by <i>Nadoya Sanmi</i>.",
+         "description":"One of Willowshore's busiest stores, the Treesparrow's Nest is a family-owned grocery store run by <i>Nadoya Sanmi</i>.<br><b>Wares: </b>alcohol, grains, preservd foods, rations",
          "tags":[
             "shop"
          ]
@@ -212,7 +212,7 @@
          "y":340,
          "category":"trade",
          "title":"The Happy Kappa",
-         "description":"The Happy Kappa is Willowshore's public bathhouse, run by the chatty halfling <i>Hua De-ge</i>. It is known as a place of relaxation, but also a good place to find some gossip.",
+         "description":"The Happy Kappa is Willowshore's public bathhouse, run by the chatty halfling <i>Hua De-ge</i>. It is known as a place of relaxation, but also a good place to find some gossip.<br><br><b>Services: </b>relaxing soaks, gossip",
          "tags":[
             "shop"
          ]
@@ -243,7 +243,7 @@
          "y":1213,
          "category":"trade",
          "title":"Luo and Laws",
-         "description":"The office of <i>Luo Xi Yang</i>, an eager female lawyer who is an expert at the complex laws that still govern Willowshore, in part because of her very extensive legal and historical library.",
+         "description":"The office of <i>Luo Xi Yang</i>, an eager female lawyer who is an expert at the complex laws that still govern Willowshore, in part because of her very extensive legal and historical library.<br><br><b>Services: </b>eclectic and historical library",
          "tags":[
             "shop"
          ]
@@ -253,7 +253,7 @@
          "y":1004,
          "category":"trade",
          "title":"Woodcarver's Guild",
-         "description":"To ensure the lumber lords would never favor anyone, the woodcarvers came together to form a guild, through which young apprentices have the opportunity to intern at different shops during their apprenticeship. <i>Yun Mong-Un</i>, the woodcarver’s current elected guild leader, is a product of such training. <i>Old Matsuki</i> is a highly respected figure here as well, having trained many of the current master crafters.",
+         "description":"To ensure the lumber lords would never favor anyone, the woodcarvers came together to form a guild, through which young apprentices have the opportunity to intern at different shops during their apprenticeship. <i>Yun Mong-Un</i>, the woodcarver’s current elected guild leader, is a product of such training. <i>Old Matsuki</i> is a highly respected figure here as well, having trained many of the current master crafters.<br><br><b>Services: </b>non-weapon wooden item crafting, artwork and jewerly crafting<br><b>Wares: </b>artwork, wood items, wooden religious symbols",
          "tags":[
             "shop"
          ]
@@ -263,7 +263,7 @@
          "y":1238,
          "category":"trade",
          "title":"Second Best",
-         "description":"Run by the inventor <i>Huo Tian-Zhe</i>, Second Best is a shop where all sorts of gadgets, tools and devices can be found. Huo Tian-Zhe occasionally collaborates with Yung Wu-Xiu of the Eternal Blaze on maintaining the town's dam.",
+         "description":"Run by the inventor <i>Huo Tian-Zhe</i>, Second Best is a shop where all sorts of gadgets, tools and devices can be found. Huo Tian-Zhe occasionally collaborates with Yung Wu-Xiu of the Eternal Blaze on maintaining the town's dam.<br><br><b>Services: </b>craft alchemical ammunition and boms, craft metal items<br><b>Wares: </b>adventuring tools, alchemical ammunition, alchemical bombs, clockwork gadgets, simple armor, metal weapons and shields",
          "tags":[
             "shop"
          ]
@@ -273,7 +273,7 @@
          "y":1129,
          "category":"trade",
          "title":"The Hand Of Spring",
-         "description":"The practice of doctor <i>Damihansig Mababangloob</i>, whom everyone calls <i>Dami</i> for short. Dami uses a mix of acupuncture, purified chemicals, and surgery to provide care. Though his treatments aren’t what Willowshore is used to, Dami has developed quite a reputation for being a charitable doctor who cares more about his patients than monetary gain.",
+         "description":"The practice of doctor <i>Damihansig Mababangloob</i>, whom everyone calls <i>Dami</i> for short. Dami uses a mix of acupuncture, purified chemicals, and surgery to provide care. Though his treatments aren’t what Willowshore is used to, Dami has developed quite a reputation for being a charitable doctor who cares more about his patients than monetary gain.<br><br><b>Services: basic non-magical healing</b><br><b>Wares: </b>alchemical healing items, healer's kit supplies, non-magical healing items",
          "tags":[
             "shop"
          ]
@@ -283,7 +283,7 @@
          "y":1319,
          "category":"trade",
          "title":"Mother's Coil",
-         "description":"A tower of dark basalt in the Nagajor style created overnight some 15 years ago by the late nagaji wizard Anjal of Thulsadus. This little corner of arcane study is now managed by Anjal's former apprentice, <i>Igawa Jubei</i>.",
+         "description":"A tower of dark basalt in the Nagajor style created overnight some 15 years ago by the late nagaji wizard Anjal of Thulsadus. This little corner of arcane study is now managed by Anjal's former apprentice, <i>Igawa Jubei</i>.<br><br><b>Services: </b>scribe scroll, craft wand<br><b>Wares: </b>arcane and occult scrolls, formulas and recipes for magic items and spells, wands",
          "tags":[
             "shop"
          ]
@@ -293,7 +293,7 @@
          "y":1095,
          "category":"trade",
          "title":"Ceiba-Duyue Exchange",
-         "description":"The heart of Willowshore's trade with the outside world. While the Kofusachi priest <i>Kim Gu-won</i> officially manages the exchange, this is also the residence of <i>“Granny” Hu Ban-niang</i>, the cunning matriarch that leads the Northridge faction. The exchange is also home to a shrine to Kofusachi, Tian god of joy and prosperity",
+         "description":"The heart of Willowshore's trade with the outside world. While the Kofusachi priest <i>Kim Gu-won</i> officially manages the exchange, this is also the residence of <i>“Granny” Hu Ban-niang</i>, the cunning matriarch that leads the Northridge faction. The exchange is also home to a shrine to Kofusachi, Tian god of joy and prosperity.<br><br><b>Services: </b>caligraphy, scribe scroll, fulu crafting<br><b>Wares: </b>beverages, divine scrolls, foods and spices, fulus, raw minerals, textiles",
          "tags":[
             "shop",
             "shrine"
@@ -304,7 +304,7 @@
          "y":1134,
          "category":"trade",
          "title":"Fisheries",
-         "description":"Freshwater fish is an important food source for Willowshore. Locals traditionally capture entire schools of fish, preserve those above a certain size, and raise small ones in their backyard ponds. <i>Zataku</i>, a female ratfolk fisher, is Willowshore’s foremost fish keeper; her ability to sense weather changes gives her the perfect edge in her occupation",
+         "description":"Freshwater fish is an important food source for Willowshore. Locals traditionally capture entire schools of fish, preserve those above a certain size, and raise small ones in their backyard ponds. <i>Zataku</i>, a female ratfolk fisher, is Willowshore’s foremost fish keeper; her ability to sense weather changes gives her the perfect edge in her occupation.<br><br><b>Services: </b>weather forecasting<br><b>Wares: </b>dried or smoked fish and shrimp, fertilizer, fishing gear, insect bait",
          "tags":[
             "shop"
          ]
@@ -314,7 +314,7 @@
          "y":1333,
          "category":"trade",
          "title":"Dock",
-         "description":"After the construction of the dam, Willowshore’s old dock was blocked off, thus requiring the construction of a new dock at the mouth of the Ceiba River. The new dock is operated and managed by Rajul Samudra, who was hired by the Ceiba-Duyue Exchange specifically for his boat-building skills",
+         "description":"After the construction of the dam, Willowshore’s old dock was blocked off, thus requiring the construction of a new dock at the mouth of the Ceiba River. The new dock is operated and managed by Rajul Samudra, who was hired by the Ceiba-Duyue Exchange specifically for his boat-building skills.<br><br><b>Services: </b>boat rental and sales",
          "tags":[
             "shop"
          ]
@@ -324,7 +324,7 @@
          "y":751,
          "category":"trade",
          "title":"Mushroom Warehouse",
-         "description":"Everyone knows that mushrooms aren’t the only things growing in the farmhouse, though. For the right price, the Mushroom House can grow almost anything. The smuggler <i>Luda Bama</i>, a spry, elderly halfling woman, is the head of this illicit market, which she runs with the explicit permission of Granny Hu",
+         "description":"Everyone knows that mushrooms aren’t the only things growing in the farmhouse, though. For the right price, the Mushroom House can grow almost anything. The smuggler <i>Luda Bama</i>, a spry, elderly halfling woman, is the head of this illicit market, which she runs with the explicit permission of Granny Hu.<br><br><b>Wares: </b>adventuring gear, drugs, poisons, tattoos",
          "tags":[
             "shop"
          ]
@@ -355,7 +355,7 @@
          "y":1096,
          "category":"eatery",
          "title":"The Leshy's Salon",
-         "description":"Leshies have lived in the Willowshore area long before the town was founded, but eventually joined the town and set up their own tea farm business. The Salon sells tea, tea ware and pottery, managed by the leshy <i>Mountain Summit Grass</i>.",
+         "description":"Leshies have lived in the Willowshore area long before the town was founded, but eventually joined the town and set up their own tea farm business. The Salon sells tea, tea ware and pottery, managed by the leshy <i>Mountain Summit Grass</i>.<br><br><b>Wares: </b>clay pottery tea ware, tea leaves",
          "tags":[
             "shop",
             "eatery"
@@ -396,7 +396,7 @@
          "y":2312,
          "category":"trade",
          "title":"Silvermist Lodge",
-         "description":"The Silvermist Lodges are split between three small compounds in the woods south of town. <i>Aiomena</i> now runs the hunting lodges from the central compound.",
+         "description":"The Silvermist Lodges are split between three small compounds in the woods south of town. <i>Aiomena</i> now runs the hunting lodges from the central compound.<br><br><b>Wares:</b> animal parts, snare supplies",
          "tags":[
             "shop"
          ]
@@ -406,7 +406,7 @@
          "y":2588,
          "category":"trade",
          "title":"Silvermist Lodge",
-         "description":"The Silvermist Lodges are split between three small compounds in the woods south of town. <i>Aiomena</i> now runs the hunting lodges from the central compound.",
+         "description":"The Silvermist Lodges are split between three small compounds in the woods south of town. <i>Aiomena</i> now runs the hunting lodges from the central compound.<br><br><b>Wares:</b> animal parts, snare supplies",
          "tags":[
             "shop"
          ]
@@ -415,7 +415,7 @@
          "x":1929,
          "y":1804,
          "category":"house",
-         "title":"Matsu's House",
+         "title":"Matsu's Home",
          "description":"<i>Matsu</i> is a gregarious, retired chef. He is a lifelong bachelor who enjoys participating in village life.",
          "tags":[
             "house"
@@ -477,7 +477,7 @@
          "y":1120,
          "category":"eatery",
          "title":"The Hungry Groundhog",
-         "description":"This inn is run by the boisterous dwarf <i>Borgram Strongarm</i> who is originally from the Five Kings Mountains but ended up in Willowshore. The Hungry Groundhog is well known for its eternal stew that Borgram has kept going for the past 20 years at least.",
+         "description":"This inn is run by the boisterous dwarf <i>Borgram Strongarm</i> who is originally from the Five Kings Mountains but ended up in Willowshore. The Hungry Groundhog is well known for its eternal stew that Borgram has kept going for the past 20 years at least.<br><br><b>Services: lodgings</b><br><b>Wares: </b>food and drinks",
          "tags":[
             "shop",
             "eatery"
@@ -488,7 +488,7 @@
          "y":1205,
          "category":"eatery",
          "title":"Zhong's Catch",
-         "description":"A small stall on the docks where the gnome <i>Zhong</i> specialises in the best fresh fish of the day. The deep fried fish is popular with the dock workers, but Zhong's speciality are his delicate sushi creations.",
+         "description":"A small stall on the docks where the gnome <i>Zhong</i> specialises in the best fresh fish of the day. The deep fried fish is popular with the dock workers, but Zhong's speciality are his delicate sushi creations.<br><br><b>Wares: </b>fried fish, sushi",
          "tags":[
             "shop",
             "eatery"
