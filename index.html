@@ -211,7 +211,7 @@
     const MAX_SCALE = 5;
     const ZOOM_SPEED = 0.001;
     const MARKER_COLOR = 'rgba(255, 80, 80, 0.8)';
-    const MARKER_RADIUS = 20;
+    const MARKER_RADIUS = 75;
 
     // Font Awesome icon name → unicode codepoint (Solid style)
     const FA_ICONS = {
@@ -512,7 +512,8 @@
       const mapTop    = imgRect.top    - containerRect.top;
       const mapBottom = imgRect.bottom - containerRect.top;
 
-      const scaledRadius = MARKER_RADIUS * scale;
+      const mapScale = scale * baseImgW / mapWidth
+      const scaledRadius = MARKER_RADIUS * mapScale;
 
       markers.forEach(({ x, y }, i) => {
         const screenX = mapLeft + (x / mapWidth)  * imgRect.width;
@@ -521,7 +522,7 @@
         circle.setAttribute('cx', screenX);
         circle.setAttribute('cy', screenY);
         circle.setAttribute('r', scaledRadius);
-        circle.setAttribute('stroke-width', 3 * scale);
+        circle.setAttribute('stroke-width', 12 * mapScale);
         if (text) {
           text.setAttribute('x', screenX);
           text.setAttribute('y', screenY);
