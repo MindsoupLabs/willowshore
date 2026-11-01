@@ -483,6 +483,48 @@
             "shop",
             "eatery"
          ]
+      },
+      {
+         "x":675,
+         "y":1806,
+         "category":"house",
+         "title":"Mellor's Practice",
+         "description":"The practice of doctor Mellor Tozo",
+         "tags":[
+            "shop",
+            "house"
+         ]
+      },
+       {
+         "x":974,
+         "y":1551,
+         "category":"shop",
+         "title":"The Crow's Nest",
+         "description":"the Crows Nest brewery and home of Hachirou 'Hachi' Karasuma",
+         "tags":[
+            "shop",
+            "house"
+         ]
+      },
+       {
+         "x":1775,
+         "y":1552,
+         "category":"house",
+         "title":"Seigetsu's home",
+         "description":"Home of Seigetsu Urashima",
+         "tags":[
+            "house"
+         ]
+      },
+      {
+         "x":636,
+         "y":2024,
+         "category":"house",
+         "title":"Yan-Zhao's home",
+         "description":"Home of You Yan-Zhao and his mother",
+         "tags":[
+            "house"
+         ]
       }
    ]
 }
